@@ -39,7 +39,7 @@ sub run {
             when ('<') { $dp-- if $dp }
             when ('+') { $tape[$dp]++ }
             when ('-') { $tape[$dp]-- }
-            when ('.') { print $tape[$dp] }
+            when ('.') { print chr $tape[$dp] }
             when (',') { $tape[$dp] = 0 }
             when ('[') {
                 $loop++ if $tape[$dp];
