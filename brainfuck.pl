@@ -1,5 +1,9 @@
 #!/usr/bin/perl
 
+# Brainfuck as a service.
+# Copyright (C) by Kamila Palaiologos Szewczyk.
+# Licensed under terms of MIT license. All rights reserved.
+
 use 5.010000;
 use strict;
 use warnings;
