@@ -55,7 +55,7 @@ sub run {
             }
         }
         
-        $time++;
+        $time++ if $ip % 10 == 0;
     }
 }
 
