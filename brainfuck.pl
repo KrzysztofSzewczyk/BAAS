@@ -9,7 +9,7 @@ use strict;
 use warnings;
 
 use CGI;
-use Readonly;
+use Time::Limit '15.0';
 
 # CGI setup, brainfuck code extraction from request
 my $request = CGI->new();
@@ -17,8 +17,8 @@ my $brainfuckCode = $request->param("code");
 
 # Brainfuck interpreter subprocedure.
 sub run {
-    my ($code, $loop, $dp, $ip, $time, @tape) = (
-        shift, 0,     0,   0,   0,     (0)
+    my ($code, $loop, $dp, $ip, @tape) = (
+        shift, 0,     0,   0,   (0)
     );
     
     for (; $ip < length $code; $ip++) {
@@ -26,11 +26,6 @@ sub run {
         
         if ($dp > 256) {
             print "Memory limit exceeded.";
-            exit;
-        }
-        
-        if ($time > 99999) {
-            print "Time limit exceeded.";
             exit;
         }
         
@@ -54,8 +49,6 @@ sub run {
                 $ip--;
             }
         }
-        
-        $time++ if $ip % 10 == 0;
     }
 }
 
